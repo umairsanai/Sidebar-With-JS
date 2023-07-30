@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="sidebar.css" />
+    <title>Sidebar</title>
+    <style>
+      @font-face {
+        font-family: "Product Sans";
+        src: local("Open Sans"), local("OpenSans"),
+          url(https://fonts.gstatic.com/s/productsans/v5/HYvgU2fE2nRJvZ5JFAumwegdm0LZdjqr5-oayXSOefg.woff2)
+            format("woff2");
+      }
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: "Product Sans";
+        overflow: hidden;
+      }
+      .sidebar {
+        display: block;
+        height: 100vh;
+        width: 260px;
+        translate: 0 -35px;
+        transition: 0.35s;
+        background-color: rgb(217, 239, 252);
+        padding: 60px 0;
+        box-shadow: 0 0 3px 1px rgb(117, 205, 252);
+      }
+      .sidebar-hidden {
+        translate: -265px -35px;
+      }
+      .sidebar-heading {
+        font-size: 30px;
+        text-align: center;
+      }
+      .sidebar-content-container {
+        padding: 30px 0;
+      }
+      .sidebar-option {
+        display: flex;
+        flex-direction: row;
+        padding: 10px;
+        align-items: center;
+        font-size: 18px;
+        transition: 0.2s;
+        border-bottom: 1px solid rgb(197, 196, 196);
+      }
+      .sidebar-option:hover {
+        border-top-right-radius: 50px;
+        border-bottom-right-radius: 50px;
+        font-size: 20px;
+        background-color: rgb(194, 226, 254);
+        border-bottom: 3px solid rgb(3, 129, 239);
+      }
+      .icon {
+        height: 40px;
+        width: 40px;
+        margin: 0 40px 0 0;
+      }
+      #close-icon {
+        height: 30px;
+        width: 30px;
+        border-radius: 5px;
+        transition: 0.35s;
+        padding: 0 0 0 7.5px;
+        rotate: 180deg;
+        translate: 5px 65px;
+        position: relative;
+        z-index: 99;
+      }
+      #close-icon:hover {
+        cursor: pointer;
+      }
+
+      @media screen and (min-width: 768px) {
+        .sidebar {
+          height: auto;
+          padding: 20px;
+          width: 100vw;
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          justify-content: space-around;
+          box-shadow: 0 0 3px 1px rgb(117, 205, 252);
+        }
+        .sidebar-hidden {
+          translate: 0 0;
+        }
+
+        .sidebar-content-container {
+          padding: 20px 0 0 0;
+        }
+        .sidebar-option {
+          display: inline-block;
+          padding: 10px;
+          margin: 0 5px;
+          font-size: 18px;
+          transition: 0.15s;
+          border-bottom: none;
+        }
+        .sidebar-option:hover {
+          border-top-right-radius: 0px;
+          border-bottom-right-radius: 0px;
+          background-color: inherit;
+          border-bottom: 3px solid rgb(3, 129, 239);
+        }
+        .icon,
+        #close-icon {
+          display: none;
+        }
+      }
+      @media screen and (min-width: 853.2px) {
+        .sidebar {
+          justify-content: space-between;
+        }
+        .sidebar-content-container {
+          padding: 0;
+        }
+      }
+      @media screen and (min-width: 950px) {
+        .sidebar-heading {
+          padding-left: 5vw;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <img
+      id="close-icon"
+      onclick="hideSidebar(); "
+      src="arrow-back.svg"
+      alt=""
+    />
+    <div class="sidebar sidebar-hidden">
+      <h3 class="sidebar-heading">Hello World!</h3>
+      <div class="sidebar-content-container">
+        <div class="sidebar-option sidebar-option-1">
+          <img class="icon" src="home.svg" alt="" />
+          <p>Home</p>
+        </div>
+        <div class="sidebar-option sidebar-option-2">
+          <img class="icon" src="team.svg" alt="" />
+          <p>Our Team</p>
+        </div>
+        <div class="sidebar-option sidebar-option-3">
+          <img class="icon" src="project.svg" alt="" />
+          <p>Our Projects</p>
+        </div>
+        <div class="sidebar-option sidebar-option-4">
+          <img class="icon" src="membership.svg" alt="" />
+          <p>Membership</p>
+        </div>
+        <div class="sidebar-option sidebar-option-5">
+          <img class="icon" src="ideas.svg" alt="" />
+          <p>Our Ideas</p>
+        </div>
+        <div class="sidebar-option sidebar-option-6">
+          <img class="icon" src="settings.svg" alt="" />
+          <p>Settings</p>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      let sideBar = document.querySelector(".sidebar");
+      let closeIcon = document.getElementById("close-icon");
+      function hideSidebar() {
+        if (sideBar.classList.contains("sidebar-hidden")) {
+          sideBar.classList.remove("sidebar-hidden");
+          closeIcon.style.translate = "230px 65px";
+          closeIcon.style.rotate = "0deg";
+        } else {
+          sideBar.classList.add("sidebar-hidden");
+          closeIcon.style.translate = "5px 65px";
+          closeIcon.style.rotate = "180deg";
+        }
+      }
+    </script>
+  </body>
+</html>
